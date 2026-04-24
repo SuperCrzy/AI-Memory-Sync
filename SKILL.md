@@ -12,7 +12,7 @@ description: >
 version: 1.4.0
 author: SuperCrzy
 license: MIT
-repository: https://github.com/SuperCrzy/workbuddy-memory-sync
+repository: https://github.com/SuperCrzy/AI-Memory-Sync
 scripts_dir: scripts
 ---
 
