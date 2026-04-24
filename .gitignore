@@ -34,8 +34,7 @@ Thumbs.db
 *.log
 
 # GIF 演示文件（本地生成，不入 Git）
-*.gif
-demo.gif
+# demo.gif 已移入 Git，README 中展示
 
 # 社交媒体宣传文案（本地文件，不入 Git）
 SOCIAL_POSTS.md

@@ -7,6 +7,8 @@
 [![Python](https://img.shields.io/badge/python-3.8%2B-green)]()
 [![Version](https://img.shields.io/badge/version-1.4.0-brightgreen)]()
 
+![Demo](demo.gif)
+
 ---
 
 ## Vision
