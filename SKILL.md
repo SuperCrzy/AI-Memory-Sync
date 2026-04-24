@@ -1,16 +1,15 @@
 ---
-name: memory-sync
+name: universal-memory-sync
 description: >
-  WorkBuddy Memory cloud sync skill. Syncs AI memory files (.workbuddy/memory/) to a
-  private GitHub repository, enabling cross-device context sharing.
-  Supports push, pull, status check, and initial setup.
-  WorkBuddy Memory 云同步技能。将 AI 的记忆文件同步到 GitHub 私有仓库，
-  实现多设备之间的上下文记忆共享。支持推送记忆、拉取记忆、查看同步状态、初始化配置。
-  支持多平台：workbuddy / cursor / openclaw / windsurf / generic / all。
-  触发词：同步记忆、上传记忆、下载记忆、memory同步、记忆同步、sync memory、
-  push memory、pull memory、多设备同步、跨设备记忆、记忆备份、memory备份、
-  同步记忆到github、拉取最新记忆、记忆云同步、查看有哪些平台、agents扫描。
-version: 1.3.0
+  通用 AI 记忆云同步技能。跨平台同步 WorkBuddy / OpenClaw / Hermes / Cursor / Windsurf 等 AI 智能体的记忆文件
+  到 GitHub 私有仓库，实现多设备之间的上下文记忆共享。
+  Universal AI Memory Sync Skill. Syncs memory files from WorkBuddy / OpenClaw / Hermes / Cursor / Windsurf
+  and other AI agents to a private GitHub repository, enabling cross-device context sharing.
+  Supports push, pull, status check, agents scan, and initial setup.
+  触发词：同步记忆、上传记忆、下载记忆、memory同步、记忆同步、sync memory、push memory、pull memory、
+  多设备同步、跨设备记忆、记忆备份、memory备份、同步 OpenClaw、同步 Hermes、agents扫描、
+  同步 OpenClaw 记忆、同步 Cursor、universal memory sync、cross-agent memory。
+version: 1.4.0
 author: SuperCrzy
 license: MIT
 repository: https://github.com/SuperCrzy/workbuddy-memory-sync

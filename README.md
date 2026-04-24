@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue)]()
 [![Python](https://img.shields.io/badge/python-3.8%2B-green)]()
-[![Version](https://img.shields.io/badge/version-1.3.0-brightgreen)]()
+[![Version](https://img.shields.io/badge/version-1.4.0-brightgreen)]()
 
 ---
 
