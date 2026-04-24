@@ -1,14 +1,12 @@
 ---
 name: universal-memory-sync
 description: >
-  通用 AI 记忆云同步技能。跨平台同步 WorkBuddy / OpenClaw / Hermes / Cursor / Windsurf 等 AI 智能体的记忆文件
-  到 GitHub 私有仓库，实现多设备之间的上下文记忆共享。
   Universal AI Memory Sync Skill. Syncs memory files from WorkBuddy / OpenClaw / Hermes / Cursor / Windsurf
   and other AI agents to a private GitHub repository, enabling cross-device context sharing.
   Supports push, pull, status check, agents scan, and initial setup.
-  触发词：同步记忆、上传记忆、下载记忆、memory同步、记忆同步、sync memory、push memory、pull memory、
-  多设备同步、跨设备记忆、记忆备份、memory备份、同步 OpenClaw、同步 Hermes、agents扫描、
-  同步 OpenClaw 记忆、同步 Cursor、universal memory sync、cross-agent memory。
+  Trigger phrases: sync memory, push memory, pull memory, download memory, memory sync, memory backup,
+  memory sync status, agents scan, show agents, setup memory sync, push all agents,
+  sync openclaw, sync hermes, sync cursor, universal memory sync, cross-agent memory.
 version: 1.4.0
 author: SuperCrzy
 license: MIT
@@ -16,47 +14,47 @@ repository: https://github.com/SuperCrzy/AI-Memory-Sync
 scripts_dir: scripts
 ---
 
-# Memory Sync Skill
+# Universal Memory Sync Skill
 
-将 WorkBuddy 及所有主流 AI 平台的 Memory 文件同步到 GitHub 私有仓库，支持跨设备、跨平台共享 AI 记忆上下文。
+Sync AI memory files from all major AI agents to a GitHub private repo — cross-device, cross-platform.
 
-**核心脚本 / Core script**：`scripts/memory_sync.py`  
-**支持平台 / Platforms**：Windows / macOS / Linux  
-**依赖 / Dependencies**：Python 3.8+、Git
+**Core script**: `scripts/memory_sync.py`  
+**Platforms**: Windows / macOS / Linux  
+**Dependencies**: Python 3.8+, Git
 
 ---
 
-## 支持的平台 / Supported Agents
+## Supported Agents
 
-| 平台 | 触发参数 |
+| Agent | Flag |
 |---|---|
 | WorkBuddy | `--agent workbuddy` |
 | Cursor | `--agent cursor` |
 | OpenClaw | `--agent openclaw` |
 | Hermes | `--agent hermes` |
 | Windsurf | `--agent windsurf` |
-| 自定义目录 | `--agent generic` |
-| **全部平台 / All** | `--agent all` |
+| Generic (custom dir) | `--agent generic` |
+| **All platforms** | `--agent all` |
 
 ---
 
-## 触发词识别规则 / Trigger Rules
+## Trigger Rules
 
-| 用户说的话 / User says | 执行操作 / Action |
+| User says | Action |
 |---|---|
-| "同步记忆"、"推送记忆"、"上传记忆"、"备份记忆" / "sync memory", "push memory" | push（默认 workbuddy） |
-| "同步全部"、"推送所有平台" / "sync all agents", "push all" | push --agent all |
-| "同步 OpenClaw/Hermes/Cursor" / "sync openclaw" | push --agent openclaw/hermes/cursor |
-| "拉取记忆"、"下载记忆"、"恢复记忆" / "pull memory", "download memory" | pull |
-| "记忆同步状态"、"查看同步" / "memory sync status" | status |
-| "查看有哪些平台"、"扫描 AI 平台" / "show agents", "agents scan" | agents |
-| "配置记忆同步"、"初始化同步" / "setup memory sync" | setup |
+| "sync memory", "push memory", "upload memory", "backup memory" | `push` (default: workbuddy) |
+| "sync all agents", "push all" | `push --agent all` |
+| "sync openclaw", "sync hermes", "sync cursor" | `push --agent <platform>` |
+| "pull memory", "download memory", "restore memory" | `pull` |
+| "memory sync status" | `status` |
+| "show agents", "agents scan" | `agents` |
+| "setup memory sync" | `setup` |
 
 ---
 
-## 命令参考 / Command Reference
+## Command Reference
 
-### 推送记忆 / Push memory
+### Push memory
 ```bash
 # Windows
 python %USERPROFILE%\.workbuddy\skills\memory-sync\scripts\memory_sync.py push --agent workbuddy
@@ -65,58 +63,58 @@ python %USERPROFILE%\.workbuddy\skills\memory-sync\scripts\memory_sync.py push -
 python3 ~/.workbuddy/skills/memory-sync/scripts/memory_sync.py push --agent all
 ```
 
-### 拉取记忆 / Pull memory
+### Pull memory
 ```bash
 python scripts/memory_sync.py pull --agent cursor
-python scripts/memory_sync.py pull --agent all    # 拉取所有平台 / Pull all
+python scripts/memory_sync.py pull --agent all    # Pull all platforms
 ```
 
-### 查看本机 AI 平台 / Discover agents
+### Discover agents
 ```bash
-python scripts/memory_sync.py agents               # 扫描并列出所有检测到的记忆目录
+python scripts/memory_sync.py agents    # Scan and list all detected memory dirs
 ```
 
-### 查看同步状态 / Check status
+### Check status
 ```bash
 python scripts/memory_sync.py status
 ```
 
-### 初始化配置 / Initialize
+### Initialize
 ```bash
 python scripts/memory_sync.py setup --repo <URL> --token <TOKEN>
 ```
 
 ---
 
-## 完整工作流程 / Full Workflow
+## Workflows
 
-### push 触发时 / When push is triggered:
-1. 检查 `~/.workbuddy/memory-sync-config.json` 是否存在
-2. 若未配置，提示用户运行 setup
-3. 根据 `--agent` 参数扫描对应的记忆目录
-4. 推送到 GitHub，展示结果
+### When push is triggered:
+1. Check `~/.workbuddy/memory-sync-config.json` exists
+2. If not configured, prompt user to run setup
+3. Scan corresponding memory directories by `--agent` flag
+4. Push to GitHub, display results
 
-### pull 触发时 / When pull is triggered:
-1. 从 GitHub 拉取最新文件
-2. 按 agent 类型还原到本地对应目录
-3. 展示更新了哪些文件
+### When pull is triggered:
+1. Pull latest files from GitHub
+2. Restore to local directories per agent type
+3. Display which files were updated
 
-### agents 触发时 / When agents is triggered:
-1. 扫描本机所有支持的 AI 平台
-2. 列出检测到的记忆目录和文件数量
-3. 帮助用户了解哪些平台有记忆可同步
+### When agents is triggered:
+1. Scan all supported AI platforms on this machine
+2. List detected memory directories and file counts
+3. Help users understand which platforms have memory to sync
 
-### setup 触发时 / When setup is triggered:
-1. 询问 GitHub 仓库 URL
-2. 询问 Personal Access Token（需 `repo` 权限）
-3. 验证连接，完成配置
+### When setup is triggered:
+1. Ask for GitHub repo URL
+2. Ask for Personal Access Token (requires `repo` scope)
+3. Verify connection, save config
 
 ---
 
-## 注意事项 / Notes
+## Notes
 
-- 配置文件 `~/.workbuddy/memory-sync-config.json` 包含 Token，已加入 `.gitignore`，永不推送
-- 冲突策略：**最新修改时间（mtime）** 优先
-- 建议使用 **GitHub 私有仓库**
-- 环境变量 `WORKBUDDY_WORKSPACE_ROOT` 可覆盖工作区根目录
-- 环境变量 `MEMORY_DIR` 用于 generic 模式指定自定义目录
+- Config file `~/.workbuddy/memory-sync-config.json` contains the token, is in `.gitignore`, and is never pushed
+- Conflict strategy: **latest mtime wins**
+- Use a **GitHub private repository** for security
+- `WORKBUDDY_WORKSPACE_ROOT` env var overrides workspace root
+- `MEMORY_DIR` env var specifies custom dir for generic mode
