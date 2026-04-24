@@ -42,11 +42,11 @@ if sys.platform == "win32":
 def get_language() -> str:
     """
     Detect display language.
-    Reads WORKBUDDY_LANG env var first (e.g. 'en', 'zh', 'zh-CN').
+    Reads AI_MEMORY_LANG env var first (e.g. 'en', 'zh', 'zh-CN').
     Falls back to system locale.
     Returns 'zh' for Chinese, 'en' for all others.
     """
-    lang = os.environ.get("WORKBUDDY_LANG", "").lower()
+    lang = os.environ.get("AI_MEMORY_LANG", "").lower()
     if lang in ("zh", "zh-cn", "zh_tw", "zh-hk"):
         return "zh"
     # Auto-detect from system locale

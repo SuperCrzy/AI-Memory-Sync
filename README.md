@@ -153,6 +153,22 @@ python memory_sync.py status
 
 ---
 
+## Language / i18n
+
+Output language is auto-detected from your system locale. You can also set it manually:
+
+```bash
+# Force English (default if not set)
+AI_MEMORY_LANG=en python memory_sync.py agents
+
+# Force Chinese
+AI_MEMORY_LANG=zh python memory_sync.py agents
+```
+
+Without the env var, the script reads `os.environ.get("LANG")` or `locale.getpreferredencoding()` to decide — Chinese system → Chinese output, otherwise English.
+
+---
+
 ## Repository Structure
 
 After sync, your GitHub private repo stores memory for all agents:
